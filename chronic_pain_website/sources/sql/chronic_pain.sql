@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 06 mai 2024 à 11:06
+-- Généré le : lun. 17 juin 2024 à 17:59
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.0.30
 
@@ -24,6 +24,84 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `affective_factors`
+--
+
+CREATE TABLE `affective_factors` (
+  `ID` int(11) NOT NULL,
+  `affective_factors` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `affective_factors`
+--
+
+INSERT INTO `affective_factors` (`ID`, `affective_factors`) VALUES
+(0, 'Tiring'),
+(1, 'Exhausting'),
+(2, 'Unbearable'),
+(3, 'Troublesome'),
+(4, 'Uncomfortable'),
+(5, 'Agonizing'),
+(6, 'Punishing'),
+(7, 'Miserable'),
+(8, 'None of the above');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `aggravating_factors`
+--
+
+CREATE TABLE `aggravating_factors` (
+  `ID` int(11) NOT NULL,
+  `aggravative_factors` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `aggravating_factors`
+--
+
+INSERT INTO `aggravating_factors` (`ID`, `aggravative_factors`) VALUES
+(0, 'Lifting'),
+(1, 'Bending Down'),
+(2, 'Sitting'),
+(3, 'Lying Down'),
+(4, 'Driving'),
+(5, 'Exercice'),
+(6, 'Walking'),
+(7, 'Climbing Up/Down the stairs'),
+(8, 'None of the above');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `easing_factors`
+--
+
+CREATE TABLE `easing_factors` (
+  `ID` int(11) NOT NULL,
+  `easing_factors` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `easing_factors`
+--
+
+INSERT INTO `easing_factors` (`ID`, `easing_factors`) VALUES
+(0, 'Heat'),
+(1, 'Compression'),
+(2, 'Medicine'),
+(3, 'Rest/Lying down'),
+(4, 'Stretching/Gentle of the above'),
+(5, 'Movement'),
+(6, 'Exercice'),
+(7, 'Getting into a comfortable position'),
+(8, 'None of the above');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `newpain`
 --
 
@@ -35,24 +113,39 @@ CREATE TABLE `newpain` (
   `ID_temporal_pattern` int(11) NOT NULL,
   `pain_related_distress` int(11) NOT NULL,
   `pain_related_interference` int(11) NOT NULL,
-  `ID_pain_location` int(11) NOT NULL,
+  `ID_pain_location` varchar(50) NOT NULL,
   `cancer` int(11) NOT NULL,
   `cancer_treatment` int(11) NOT NULL,
   `begin_after_surgery` int(11) NOT NULL,
   `worse_after_surgery` int(11) NOT NULL,
   `spread_of_pain` int(11) NOT NULL,
-  `area_of_surgery` int(11) NOT NULL
+  `area_of_surgery` int(11) NOT NULL,
+  `brain_nerves_illness` int(11) NOT NULL,
+  `internal_organs_issues` int(11) NOT NULL,
+  `musculoskeletal_pain` int(11) NOT NULL,
+  `headaches_pain_face` int(11) NOT NULL,
+  `ideas_about_pain` varchar(200) NOT NULL,
+  `concerns_about_pain` varchar(200) NOT NULL,
+  `expectations` varchar(200) NOT NULL,
+  `closing_thoughts` varchar(200) NOT NULL,
+  `ID_vertebrae` varchar(50) NOT NULL,
+  `affective_factors` int(11) NOT NULL,
+  `aggravating_factors` int(11) NOT NULL,
+  `easing_factors` int(11) NOT NULL,
+  `pain_qualities` int(11) NOT NULL,
+  `sensory_symptoms` int(11) NOT NULL,
+  `bodychart_image` longblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `newpain`
 --
 
-INSERT INTO `newpain` (`ID`, `ID_user`, `ID_pain_beginning`, `pain_intensity`, `ID_temporal_pattern`, `pain_related_distress`, `pain_related_interference`, `ID_pain_location`, `cancer`, `cancer_treatment`, `begin_after_surgery`, `worse_after_surgery`, `spread_of_pain`, `area_of_surgery`) VALUES
-(8, 24, 0, 6, 1, 3, 9, 0, 0, 0, 0, 1, 0, 0),
-(9, 25, 2, 4, 1, 6, 1, 0, 0, 0, 0, 0, 1, 1),
-(10, 25, 2, 5, 1, 2, 7, 0, 0, 0, 0, 1, 0, 0),
-(11, 27, 0, 0, 1, 1, 4, 0, 0, 0, 0, 1, 1, 1);
+INSERT INTO `newpain` (`ID`, `ID_user`, `ID_pain_beginning`, `pain_intensity`, `ID_temporal_pattern`, `pain_related_distress`, `pain_related_interference`, `ID_pain_location`, `cancer`, `cancer_treatment`, `begin_after_surgery`, `worse_after_surgery`, `spread_of_pain`, `area_of_surgery`, `brain_nerves_illness`, `internal_organs_issues`, `musculoskeletal_pain`, `headaches_pain_face`, `ideas_about_pain`, `concerns_about_pain`, `expectations`, `closing_thoughts`, `ID_vertebrae`, `affective_factors`, `aggravating_factors`, `easing_factors`, `pain_qualities`, `sensory_symptoms`, `bodychart_image`) VALUES
+(53, 41, 3, 5, 1, 7, 2, 'OB', 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, '', '', '', '', '?', 0, 0, 0, 0, 0, ''),
+(54, 41, 3, 5, 1, 7, 2, 'Saph', 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, '', '', '', '', 'L', 0, 0, 0, 0, 0, ''),
+(55, 40, 0, 4, 1, 5, 3, 'ATR', 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, '', '', '', '', 'T', 0, 0, 0, 0, 0, ''),
+(56, 40, 0, 4, 1, 5, 3, 'CP', 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, '', '', '', '', 'L', 0, 0, 0, 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -83,22 +176,105 @@ INSERT INTO `pain_beginning` (`ID`, `pain_beginning`) VALUES
 --
 
 CREATE TABLE `pain_location` (
-  `ID` int(11) NOT NULL,
   `pain_location` varchar(100) NOT NULL,
-  `coordinates` varchar(100) NOT NULL
+  `abreviation` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `pain_location`
 --
 
-INSERT INTO `pain_location` (`ID`, `pain_location`, `coordinates`) VALUES
-(0, 'Head', '65,15,65,65,105,65,105,15'),
-(1, 'Left arm', '115,75,115,225,165,225,165,75'),
-(2, 'Right arm', '0,75,0,225,50,225,50,75'),
-(3, 'Left leg', '82,175,82,375,115,375,115,175'),
-(4, 'Right leg', '50,175,50,375,82,375,82,175'),
-(5, 'Body', '50,65,50,175,115,175,115,65');
+INSERT INTO `pain_location` (`pain_location`, `abreviation`) VALUES
+('?', '*'),
+('?', '+'),
+('x', '?'),
+('Axillary', 'A'),
+('Anterior Thoracic Ramj?', 'ATR'),
+('Common Peroneal', 'CP'),
+('Deep Peroneal', 'DP'),
+('Femoral', 'F'),
+('Lateral Antebrachial Cutaneous', 'LAC'),
+('Lateral Brachial Cutaneous', 'LBC'),
+('Lateral Femoral Cutaneous', 'LFC'),
+('Lateral Thoracic Ramj?', 'LTR'),
+('Median', 'M'),
+('Medial Antebrachial Cutaneous', 'MAC'),
+('Mandibular Branch', 'MandB'),
+('Maxillary Branch', 'MaxiB'),
+('Medial Branchial Cutaneous', 'MBC'),
+('Obturator', 'O'),
+('Ophtalmic Branch', 'OB'),
+('Radial', 'R'),
+('Saphenous', 'Saph'),
+('Supraclavicular', 'SC'),
+('Superpicial Peroneal', 'SP'),
+('Sural', 'Sural'),
+('Transverse Cervical', 'TC'),
+('Ulnar', 'U'),
+('?', 'x');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pain_qualities`
+--
+
+CREATE TABLE `pain_qualities` (
+  `ID` int(11) NOT NULL,
+  `pain_qualities` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `pain_qualities`
+--
+
+INSERT INTO `pain_qualities` (`ID`, `pain_qualities`) VALUES
+(0, 'Dull'),
+(1, 'Throbbing'),
+(2, 'Stabbing'),
+(3, 'Gnawing'),
+(4, 'Piercing'),
+(5, 'Cramping'),
+(6, 'Splitting'),
+(7, 'Nagging'),
+(8, 'Crushing'),
+(9, 'Electric-Shock Like'),
+(10, 'Shooting'),
+(11, 'Sharp'),
+(12, 'Radiating'),
+(13, 'None of the above');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sensory_symptoms`
+--
+
+CREATE TABLE `sensory_symptoms` (
+  `ID` int(11) NOT NULL,
+  `sensory_symptoms` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `sensory_symptoms`
+--
+
+INSERT INTO `sensory_symptoms` (`ID`, `sensory_symptoms`) VALUES
+(0, 'Heaviness'),
+(1, 'Cold / cool'),
+(2, 'Hot / warm'),
+(3, 'Tight'),
+(4, 'Tingling'),
+(5, 'Pins and Needles'),
+(6, 'Numbness'),
+(7, 'Pulling'),
+(8, 'Itching'),
+(9, 'Tickling'),
+(10, 'Crawling'),
+(11, 'Wet'),
+(12, 'Electric'),
+(13, 'Prickling'),
+(14, 'None of the above');
 
 -- --------------------------------------------------------
 
@@ -135,18 +311,60 @@ CREATE TABLE `userinformation` (
   `phone_number` varchar(100) NOT NULL,
   `birthdate` date NOT NULL,
   `adress` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL
+  `password` varchar(100) NOT NULL,
+  `user_role` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `userinformation`
 --
 
-INSERT INTO `userinformation` (`ID`, `first_name`, `last_name`, `email`, `phone_number`, `birthdate`, `adress`, `password`) VALUES
-(24, 'Eden', 'Hazard', 'mael.rimeur@isen-ouest.yncrea.fr', '', '2024-01-17', '', '$2y$10$QmFQkNCoZsRkDSB9Gg0y5.1fNddatcGP6H2fFaroAVAtTVMHd1Cr6'),
-(25, 'Mael', 'Rimeur', 'mael.rimeur@gmail.com', '', '2024-05-15', '', '$2y$10$dHNERNNsbBynBzj3AbdLrufEbNzutpwCnEIFN83F09EaEmSFVl1Ym'),
-(26, 'Mael', 'Rimeur', 'mael.rimeur@gmail.com', '', '2024-05-06', '', '$2y$10$ucVDHC8Si/9/mJ15jGelIeVsBQAIcnnYTpmzWrUVdZIl2TigIXFAW'),
-(27, 'Elouen', 'Pont', 'elouenpont@gmail.com', '', '2024-05-02', '', '$2y$10$nrlOAF.Q3k0gQkuMc8L1JeHlwBSCdJFDOzXJe2tYwhDsaEBZAM2Re');
+INSERT INTO `userinformation` (`ID`, `first_name`, `last_name`, `email`, `phone_number`, `birthdate`, `adress`, `password`, `user_role`) VALUES
+(39, 'Ivan', 'Rimeur', 'ivan.rimeur@gmail.com', '', '2024-06-04', '', '$2y$10$Kx/TPXEiJE5uWvfBCM1z.udcPKIaqSKamVov4IJ9EUlN0i.lZQ5E2', 1),
+(40, 'Elouen', 'Pont', 'elouenpont@gmail.com', '', '2024-05-28', '', '$2y$10$SiX8R6ydg4bBBv59rC5tj.YeMt9oVUzyN9wl2kQ4QwlnI9BKRirjy', 0),
+(41, 'Mael', 'Rimeur', 'mael.rimeur@gmail.com', '', '2024-05-28', '', '$2y$10$cR.P6SP8enlT0TEMVklmEOSIR5G3rBvD2B8nzkx1EAdqFwxOrtEzq', 0),
+(42, 'Hugo', 'Rimeur', 'hugo.rimeur@gmail.com', '', '2024-05-29', '', '$2y$10$TfQLlfDL1Xt8E8b7Yl6xH.0av3uLdfhWVaS2YSGewIPG7oH66dDL2', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `user_role`
+--
+
+CREATE TABLE `user_role` (
+  `ID` int(11) NOT NULL,
+  `user_role` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `user_role`
+--
+
+INSERT INTO `user_role` (`ID`, `user_role`) VALUES
+(0, 'patient'),
+(1, 'physician');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `vertebrea`
+--
+
+CREATE TABLE `vertebrea` (
+  `ID` varchar(50) NOT NULL,
+  `vertebrea` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `vertebrea`
+--
+
+INSERT INTO `vertebrea` (`ID`, `vertebrea`) VALUES
+('?', 'No vertebrae touch'),
+('C', 'Cervical vertebrae'),
+('L', 'Lumbar vertebrae'),
+('S', 'Sacral vertebrae'),
+('T', 'Thoracic vertebrae');
 
 -- --------------------------------------------------------
 
@@ -172,12 +390,29 @@ INSERT INTO `yesorno_questions` (`ID`, `response`) VALUES
 --
 
 --
+-- Index pour la table `affective_factors`
+--
+ALTER TABLE `affective_factors`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `aggravating_factors`
+--
+ALTER TABLE `aggravating_factors`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `easing_factors`
+--
+ALTER TABLE `easing_factors`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Index pour la table `newpain`
 --
 ALTER TABLE `newpain`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `fk_description_pain` (`pain_intensity`),
-  ADD KEY `fk_pain_location` (`ID_pain_location`),
   ADD KEY `fk_pain_related_distress` (`pain_related_distress`),
   ADD KEY `fk_pain_related_interference` (`pain_related_interference`),
   ADD KEY `fk_temporal_pattern` (`ID_temporal_pattern`),
@@ -188,7 +423,18 @@ ALTER TABLE `newpain`
   ADD KEY `fk_worse_after_surgery` (`worse_after_surgery`),
   ADD KEY `fk_spread_of_pain` (`spread_of_pain`),
   ADD KEY `fk_pain_beginning` (`ID_pain_beginning`),
-  ADD KEY `fk_userID` (`ID_user`);
+  ADD KEY `fk_userID` (`ID_user`),
+  ADD KEY `fk_brain_nerves_illness` (`brain_nerves_illness`),
+  ADD KEY `fk_internal_organs_issues` (`internal_organs_issues`),
+  ADD KEY `fk_muskuloskeletal_pain` (`musculoskeletal_pain`),
+  ADD KEY `fk_headaches_pain_face` (`headaches_pain_face`),
+  ADD KEY `fk_pain_location` (`ID_pain_location`),
+  ADD KEY `fk_vertrebrea` (`ID_vertebrae`),
+  ADD KEY `fk_affective_factors` (`affective_factors`),
+  ADD KEY `fk_aggravating_factors` (`aggravating_factors`),
+  ADD KEY `fk_easing_factors` (`easing_factors`),
+  ADD KEY `fk_pain_qualities` (`pain_qualities`),
+  ADD KEY `fk_sensory_symptoms` (`sensory_symptoms`);
 
 --
 -- Index pour la table `pain_beginning`
@@ -200,6 +446,18 @@ ALTER TABLE `pain_beginning`
 -- Index pour la table `pain_location`
 --
 ALTER TABLE `pain_location`
+  ADD PRIMARY KEY (`abreviation`);
+
+--
+-- Index pour la table `pain_qualities`
+--
+ALTER TABLE `pain_qualities`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `sensory_symptoms`
+--
+ALTER TABLE `sensory_symptoms`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -212,6 +470,19 @@ ALTER TABLE `temporal_pattern`
 -- Index pour la table `userinformation`
 --
 ALTER TABLE `userinformation`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `fk_user_role` (`user_role`);
+
+--
+-- Index pour la table `user_role`
+--
+ALTER TABLE `user_role`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `vertebrea`
+--
+ALTER TABLE `vertebrea`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -228,13 +499,13 @@ ALTER TABLE `yesorno_questions`
 -- AUTO_INCREMENT pour la table `newpain`
 --
 ALTER TABLE `newpain`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT pour la table `userinformation`
 --
 ALTER TABLE `userinformation`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- Contraintes pour les tables déchargées
@@ -244,16 +515,32 @@ ALTER TABLE `userinformation`
 -- Contraintes pour la table `newpain`
 --
 ALTER TABLE `newpain`
+  ADD CONSTRAINT `fk_affective_factors` FOREIGN KEY (`affective_factors`) REFERENCES `affective_factors` (`ID`),
+  ADD CONSTRAINT `fk_aggravating_factors` FOREIGN KEY (`aggravating_factors`) REFERENCES `aggravating_factors` (`ID`),
   ADD CONSTRAINT `fk_area_of_surgery` FOREIGN KEY (`area_of_surgery`) REFERENCES `yesorno_questions` (`ID`),
   ADD CONSTRAINT `fk_begin_after_surgery` FOREIGN KEY (`begin_after_surgery`) REFERENCES `yesorno_questions` (`ID`),
+  ADD CONSTRAINT `fk_brain_nerves_illness` FOREIGN KEY (`brain_nerves_illness`) REFERENCES `yesorno_questions` (`ID`),
   ADD CONSTRAINT `fk_cancer` FOREIGN KEY (`cancer`) REFERENCES `yesorno_questions` (`ID`),
+  ADD CONSTRAINT `fk_easing_factors` FOREIGN KEY (`easing_factors`) REFERENCES `easing_factors` (`ID`),
+  ADD CONSTRAINT `fk_headaches_pain_face` FOREIGN KEY (`headaches_pain_face`) REFERENCES `yesorno_questions` (`ID`),
+  ADD CONSTRAINT `fk_internal_organs_issues` FOREIGN KEY (`internal_organs_issues`) REFERENCES `yesorno_questions` (`ID`),
+  ADD CONSTRAINT `fk_muskuloskeletal_pain` FOREIGN KEY (`musculoskeletal_pain`) REFERENCES `yesorno_questions` (`ID`),
   ADD CONSTRAINT `fk_pain_beginning` FOREIGN KEY (`ID_pain_beginning`) REFERENCES `pain_beginning` (`ID`),
-  ADD CONSTRAINT `fk_pain_location` FOREIGN KEY (`ID_pain_location`) REFERENCES `pain_location` (`ID`),
+  ADD CONSTRAINT `fk_pain_location` FOREIGN KEY (`ID_pain_location`) REFERENCES `pain_location` (`abreviation`),
+  ADD CONSTRAINT `fk_pain_qualities` FOREIGN KEY (`pain_qualities`) REFERENCES `pain_qualities` (`ID`),
+  ADD CONSTRAINT `fk_sensory_symptoms` FOREIGN KEY (`sensory_symptoms`) REFERENCES `sensory_symptoms` (`ID`),
   ADD CONSTRAINT `fk_spread_of_pain` FOREIGN KEY (`spread_of_pain`) REFERENCES `yesorno_questions` (`ID`),
   ADD CONSTRAINT `fk_temporal_pattern` FOREIGN KEY (`ID_temporal_pattern`) REFERENCES `temporal_pattern` (`ID`),
   ADD CONSTRAINT `fk_treatment` FOREIGN KEY (`cancer_treatment`) REFERENCES `yesorno_questions` (`ID`),
   ADD CONSTRAINT `fk_userID` FOREIGN KEY (`ID_user`) REFERENCES `userinformation` (`ID`),
+  ADD CONSTRAINT `fk_vertrebrea` FOREIGN KEY (`ID_vertebrae`) REFERENCES `vertebrea` (`ID`),
   ADD CONSTRAINT `fk_worse_after_surgery` FOREIGN KEY (`worse_after_surgery`) REFERENCES `yesorno_questions` (`ID`);
+
+--
+-- Contraintes pour la table `userinformation`
+--
+ALTER TABLE `userinformation`
+  ADD CONSTRAINT `fk_user_role` FOREIGN KEY (`user_role`) REFERENCES `user_role` (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

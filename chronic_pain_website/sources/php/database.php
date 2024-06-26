@@ -1,7 +1,6 @@
 <?php
 require_once("constants.php");
 
-
 //add in a table according to the tables of the database the data of each table for the drop-down menus
 $db = dbConnect();
 
@@ -17,6 +16,16 @@ $data['beginAfterSurgery'] = dbGetDescription($db, 'yesorno_questions');
 $data['worseAfterSurgery'] = dbGetDescription($db, 'yesorno_questions');
 $data['areaSurgery'] = dbGetDescription($db, 'yesorno_questions');
 $data['painSpreadSurgery'] = dbGetDescription($db, 'yesorno_questions');
+$data['brainNerves'] = dbGetDescription($db, 'yesorno_questions');
+$data['internalOrgans'] = dbGetDescription($db, 'yesorno_questions');
+$data['muskuloskeletalPain'] = dbGetDescription($db, 'yesorno_questions');
+$data['headaches'] = dbGetDescription($db, 'yesorno_questions');
+$data['userRole'] = dbGetDescription($db, 'user_role');
+$data['affective_factors'] = dbGetDescription($db, 'affective_factors');
+$data['aggravating_factors'] = dbGetDescription($db, 'aggravating_factors');
+$data['easing_factors'] = dbGetDescription($db, 'easing_factors');
+$data['pain_qualities'] = dbGetDescription($db, 'pain_qualities');
+$data['sensory_symptoms'] = dbGetDescription($db, 'sensory_symptoms');
 
 
 echo json_encode($data);

@@ -10,6 +10,7 @@ document.getElementById("account_creation_form").addEventListener('submit', func
     var birthday = document.querySelector('input[name="birthday"]').value;
     var email = document.querySelector('input[name="email"]').value;
     var password = document.querySelector('input[name="password"]').value;
+    var userRole = document.querySelector('select[name="user_role"]').value;
 
     // Create a FormData object to store form data
     var formData = new FormData();
@@ -18,6 +19,7 @@ document.getElementById("account_creation_form").addEventListener('submit', func
     formData.append('birthday', birthday);
     formData.append('email', email);
     formData.append('password', password);
+    formData.append('user_role', userRole);
 
     // Send form data via AJAX request
     var xhr = new XMLHttpRequest();

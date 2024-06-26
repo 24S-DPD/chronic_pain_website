@@ -2,6 +2,8 @@
 session_set_cookie_params(7200);
 session_start();
 
+header('Content-Type: application/json');
+
 try {
     require_once("constants.php");
 
@@ -25,15 +27,16 @@ try {
     if ($user && password_verify($password, $user["password"]) && $user["first_name"] === $firstName && $user["last_name"] === $lastName) {
         // L'utilisateur est authentifié avec succès, enregistrez son ID dans la session
         $_SESSION["user_id"] = $user["ID"];
-        echo "success";
+        $user_role = $user["user_role"];
+        echo json_encode(['status' => 'success', 'user_role' => $user_role]);
         exit;
     } else {
-        echo "error";
+        echo json_encode(['status' => 'error']);
         exit;
     }
 } catch (PDOException $exception) {
     error_log('Database connection error: '.$exception->getMessage());
-    echo "error"; 
+    echo json_encode(['status' => 'error', 'message' => 'Database error']);
     exit;
 }
 ?>

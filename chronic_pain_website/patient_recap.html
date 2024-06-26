@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- CSS Style -->
+    <link rel="stylesheet" type="text/css" href="sources/css/style.css">
+
+    <!-- Font -->
+
+    <!-- JS Script -->
+    <script src="sources/js/recover_data.js"></script>
+    <script src="sources/js/header_footer.js" defer></script>
+    <!-- Allow to download the answers in a pdf file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+
+    <!-- Title -->
+    <title>Patient recap</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <header id = "header">
+    </header>
+    
+    <br><br>
+    <h1>Recap of your answer</h1>
+    
+    <div id="user-info" class="user-info"></div>
+    <div id="form_answer" class="form_answers"></div>
+
+    <hr>
+    <button id="download-pdf" onclick="downloadPDF()">Download PDF</button>
+    <br>
+    <!-- Footer -->
+    <footer id="footer"></footer>
+    
+  </body>
+</html>

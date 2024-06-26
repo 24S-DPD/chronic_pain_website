@@ -1,0 +1,52 @@
+#clickDot {
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  visibility: hidden;
+  transform: translate(-50%, -50%);
+}
+
+#Dot {
+  width: 10px;
+  height: 10px;
+  background-color: blue;
+  border-radius: 50%;
+  position: absolute;
+  visibility: visible;
+  transform: translate(-50%, -50%);
+}
+
+#greenDot {
+  width: 1000px;
+  height: 1000px;
+  background-color: rgb(128, 0, 53);
+  border-radius: 50%;
+  position: absolute;
+  visibility: visible;
+}
+
+#bodyChart {
+  position: relative; /* Définir la position relative */
+}
+
+.image-container {
+  display: inline-block;
+  overflow: hidden; /* Pour cacher les parties de l'image qui dépassent */
+  width: 800px;
+  height: 500px; 
+}
+
+section {
+  /*text-align: center;*/
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#painLocation2{
+  width: 500px;
+}
+
+

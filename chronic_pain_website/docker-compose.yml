@@ -1,0 +1,84 @@
+version: '3.8'
+
+services:
+  # Apache service
+  # apache:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.js
+  #   container_name: apache
+  #   ports:
+  #     - 8080:80
+  #   volumes:
+  #     - ./:/var/www/html
+  #     - ./sources/css:/var/www/html/sources/css
+  #     - ./sources/js:/var/www/html/sources/js
+  #   networks:
+  #     - app-network
+
+  # PHP service
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile.php
+    container_name: php82
+    ports:
+      - 8000:80
+    volumes:
+      - ./login.html:/var/www/html/login.html
+      - ./inscription.html:/var/www/html/inscription.html
+      - ./formulaire.html:/var/www/html/formulaire.html
+      - ./patient_answers.html:/var/www/html/patient_answers.html
+      - ./patient_recap.html:/var/www/html/patient_recap.html
+      - ./physician_page.html:/var/www/html/physician_page.html
+      - ./accueil.html:/var/www/html/accueil.html
+      
+      - ./sources/css:/var/www/html/sources/css
+      - ./sources/js:/var/www/html/sources/js
+      - ./sources/php:/var/www/html/sources/php
+      - ./sources/images:/var/www/html/sources/images
+      - ./composer.json:/var/www/html/composer.json
+      - ./composer.lock:/var/www/html/composer.lock
+      - ./vendor:/var/www/html/vendor
+    environment:
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      DB_SERVER: ${DB_SERVER}
+      DB_PORT: ${DB_PORT}
+    networks:
+      - app-network
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    container_name: mysql8
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - 3307:3306
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+    networks:
+      - app-network
+
+  phpma:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: db
+      PMA_PASSWORD: ${PMA_PASSWORD}
+      PMA_USER: ${MYSQL_USER}
+    ports:
+      - 8899:80
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

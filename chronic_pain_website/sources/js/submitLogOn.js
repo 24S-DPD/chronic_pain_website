@@ -22,17 +22,30 @@ document.getElementById("login_form").addEventListener('submit', function(event)
     xhr.open('POST', 'sources/php/submitLogOn.php', true);
     xhr.onload = function(){
         if (xhr.status === 200){
-            console.log(xhr.responseText); 
-            var response = xhr.responseText;
-            if (response === "success"){
-                sessionStorage.setItem('loggedin', 'true');
-                window.location.href = "formulaire.html";
-                var welcomeMessage = "Welcome " + firstName + " " + lastName + "!";
-                alert(welcomeMessage);
-            }
-            else{
+            try {
+                var response = JSON.parse(xhr.responseText);
+                console.log(response);
+
+                if (response.status === "success"){
+                    sessionStorage.setItem('loggedin', 'true');
+                    var welcomeMessage = "Welcome " + firstName + " " + lastName + "!";
+                    alert(welcomeMessage);
+
+                    if (response.user_role === 0){
+                        window.location.href = "formulaire.html";
+                    }
+                    else if (response.user_role === 1){
+                        window.location.href = "physician_page.html";
+                    }
+                } else {
+                    var errorMessage = document.getElementById("error_message");
+                    errorMessage.textContent = "Identifiant or password wrong. Please try again";
+                    errorMessage.style.color = "red";
+                }
+            } catch (e) {
+                console.error("An error occurred during JSON parsing: ", e);
                 var errorMessage = document.getElementById("error_message");
-                errorMessage.textContent = "Identifiant or password wrong. Please try again";
+                errorMessage.textContent = "An unexpected error occurred. Please try again.";
                 errorMessage.style.color = "red";
             }
         } else {
@@ -40,4 +53,4 @@ document.getElementById("login_form").addEventListener('submit', function(event)
         }
     };
     xhr.send(formData); // Send form data
-}); 
+});

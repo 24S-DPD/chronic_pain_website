@@ -12,7 +12,10 @@
 
     <!-- JS Script -->
     <script src="sources/js/utils.js" defer></script>
+    <script src="sources/js/inscription.js" defer></script>
     <script src="sources/js/submitInscriptionForm.js" defer></script>
+    <script src="sources/js/header_footer.js" defer></script>
+
 
     <title>inscription</title>
   </head>
@@ -20,7 +23,7 @@
 
   <body class="body">
     <!-- Header -->
-    <header class="header">
+    <header id = "header" class="header">
     </header>
 
     <main class="main">
@@ -40,6 +43,9 @@
           <label for="email">Email:</label>
           <input type="email" class="personnal_info" name="email" required><br><br>
 
+          <label>Type of user : </label>
+          <select id="user_role" name="user_role" required></select><br><br>
+
           <label for="password">Password:</label>  
           <input type="password" id="password" name="password" required><br><br>
 
@@ -52,10 +58,7 @@
 
 
     <!-- Footer -->
-    <footer class="footer">
-      <hr>
-      Footer - Idk what to put here
-      <br>
+    <footer id = "footer" class="footer">
     </footer>
   </body>
 </html>

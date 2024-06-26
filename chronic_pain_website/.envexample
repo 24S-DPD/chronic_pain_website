@@ -1,0 +1,11 @@
+MYSQL_ROOT_PASSWORD=mypassword
+MYSQL_DATABASE=chronic_pain
+MYSQL_USER=admin
+MYSQL_PASSWORD=mypassword
+PMA_PASSWORD=mypassword
+
+DB_USER=admin
+DB_PASSWORD=mypassword
+DB_NAME=chronic_pain
+DB_SERVER=db
+DB_PORT=3307

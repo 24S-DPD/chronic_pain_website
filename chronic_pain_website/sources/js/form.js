@@ -242,37 +242,158 @@ function printPaintSpreadSurgery(){
 }
 
 
-function printPainLocation(){
+
+function printAreaSurgery(){
     ajaxRequest("GET", "sources/php/database.php", function(response){
-        var map = document.getElementById("painMap");
+        var div = document.getElementById("area_surgery");
         const data = JSON.parse(response);
-        const descriptionPainLocation = data.descriptionPainLocation.map(
-            item => ({
-                id: item.ID,
-                values: {
-                    painAnatomy : item.pain_location,
-                    painCoordinates : item.coordinates
-                }
-            }));
+        const descriptionAreaSurgery = data.areaSurgery.map(item => ({id: item.ID, value: item.response}));
 
-        descriptionPainLocation.forEach(function(item) {
+        descriptionAreaSurgery.forEach(function(item) {
             var id = item.id;
-            var painAnatomy = item.values.painAnatomy;
-            var painCoordinates = item.values.painCoordinates
+            var value = item.value;
 
-            var area = document.createElement('area');
-            area.shape = "poly";
-            area.coords = painCoordinates;
-            area.alt = painAnatomy;
-            area.addEventListener("click", function() {
-                var textPainLocation = document.getElementById("painLocation")
-                textPainLocation.value = painAnatomy; // Pass the pain anatomy instead of ID
-                textPainLocation.dataset.id = id;
-            });
-            map.appendChild(area);
+            var radioInput = document.createElement('input');
+            radioInput.type = 'radio';
+            radioInput.name = "area_surgery";
+            radioInput.value = id;
+            radioInput.id = 'area_surgery_'+ id;
+
+            var radioLabel = document.createElement('label');
+            radioLabel.htmlFor = 'area_surgery_' + id;
+            radioLabel.textContent = value;
+
+            div.appendChild(radioInput);
+            div.appendChild(radioLabel);
         });
     })
 }
+
+function printBrainNerves(){
+    ajaxRequest("GET", "sources/php/database.php", function(response){
+        var div = document.getElementById("brain_nerves_illness");
+        const data = JSON.parse(response);
+        const descriptionBrainNervesIllness = data.brainNerves.map(item => ({id: item.ID, value: item.response}));
+
+        descriptionBrainNervesIllness.forEach(function(item) {
+            var id = item.id;
+            var value = item.value;
+
+            var radioInput = document.createElement('input');
+            radioInput.type = 'radio';
+            radioInput.name = "brain_nerves_illness";
+            radioInput.value = id;
+            radioInput.id = 'brain_nerves_illness_'+ id;
+
+            var radioLabel = document.createElement('label');
+            radioLabel.htmlFor = 'brain_nerves_illness_' + id;
+            radioLabel.textContent = value;
+
+            div.appendChild(radioInput);
+            div.appendChild(radioLabel);
+        });
+    })
+}
+
+function printInternalOrgans(){
+    ajaxRequest("GET", "sources/php/database.php", function(response){
+        var div = document.getElementById("internal_organs_issues");
+        const data = JSON.parse(response);
+        const descriptionInternalOrgans = data.internalOrgans.map(item => ({id: item.ID, value: item.response}));
+
+        descriptionInternalOrgans.forEach(function(item) {
+            var id = item.id;
+            var value = item.value;
+
+            var radioInput = document.createElement('input');
+            radioInput.type = 'radio';
+            radioInput.name = "internal_organs";
+            radioInput.value = id;
+            radioInput.id = 'internal_organs_'+ id;
+
+            var radioLabel = document.createElement('label');
+            radioLabel.htmlFor = 'internal_organs_' + id;
+            radioLabel.textContent = value;
+
+            div.appendChild(radioInput);
+            div.appendChild(radioLabel);
+        });
+    })
+}
+
+function printMuskuloskeletalPain(){
+    ajaxRequest("GET", "sources/php/database.php", function(response){
+        var div = document.getElementById("muskuloskeletal_pain");
+        const data = JSON.parse(response);
+        const descriptionMuskuloskeletalPain = data.muskuloskeletalPain.map(item => ({id: item.ID, value: item.response}));
+
+        descriptionMuskuloskeletalPain.forEach(function(item) {
+            var id = item.id;
+            var value = item.value;
+
+            var radioInput = document.createElement('input');
+            radioInput.type = 'radio';
+            radioInput.name = "muskuloskeletal_pain";
+            radioInput.value = id;
+            radioInput.id = 'muskuloskeletal_pain_'+ id;
+
+            var radioLabel = document.createElement('label');
+            radioLabel.htmlFor = 'muskuloskeletal_pain_' + id;
+            radioLabel.textContent = value;
+
+            div.appendChild(radioInput);
+            div.appendChild(radioLabel);
+        });
+    })
+}
+
+function printHeadaches(){
+    ajaxRequest("GET", "sources/php/database.php", function(response){
+        var div = document.getElementById("headaches_pain_face");
+        const data = JSON.parse(response);
+        const descriptionHeadaches = data.headaches.map(item => ({id: item.ID, value: item.response}));
+
+        descriptionHeadaches.forEach(function(item) {
+            var id = item.id;
+            var value = item.value;
+
+            var radioInput = document.createElement('input');
+            radioInput.type = 'radio';
+            radioInput.name = "headaches";
+            radioInput.value = id;
+            radioInput.id = 'headaches_'+ id;
+
+            var radioLabel = document.createElement('label');
+            radioLabel.htmlFor = 'headaches_' + id;
+            radioLabel.textContent = value;
+
+            div.appendChild(radioInput);
+            div.appendChild(radioLabel);
+        });
+    })
+}
+
+function nextSection(sectionNumber) {
+    const currentSection = document.querySelector('.form-section.active');
+    const nextSection = document.getElementById('section' + sectionNumber);
+    if (currentSection && nextSection) {
+        currentSection.classList.remove('active');
+        nextSection.classList.add('active');
+    }
+}
+
+
+function previousSection(sectionNumber) {
+    const currentSection = document.querySelector('.form-section.active');
+    const previousSection = document.getElementById('section' + sectionNumber);
+    if (currentSection && previousSection) {
+        currentSection.classList.remove('active');
+        previousSection.classList.add('active');
+    }
+}
+
+
+
 
 printPainBeginning();
 printTemporalPattern();
@@ -283,4 +404,7 @@ printMovementPain();
 printPaintSpreadSurgery();
 printWorseAfterSurgery();
 printBeginAfterSurgery();
-printPainLocation();
+printBrainNerves();
+printInternalOrgans();
+printMuskuloskeletalPain();
+printHeadaches();

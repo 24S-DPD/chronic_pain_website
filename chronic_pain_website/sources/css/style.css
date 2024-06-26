@@ -1,21 +1,102 @@
 /* Styles de base pour le corps de la page */
+/* General Styles */
 body {
   font-family: Arial, sans-serif;
-  line-height: 1.6;
+  margin: 0;
+  padding: 0;
   background-color: #f5f5f5;
+  color: #333;
+  height: 100vh; /* Ensures the body takes the full viewport height */
 }
 
-/* Styles pour l'en-tête */
-header {
+/* Header Styles */
+header, footer {
+  background-color: #333;
+  color: #f5f5f5;
+  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
+  /*height:75px;*/
   text-align: center;
+  display: flex;
 }
 
-header h1 {
-  font-size: 2rem;
+
+
+h1 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+header nav, footer nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+header ul, footer ul:not(.souslist){
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+header li,footer li {
+  margin: 0 15px;
+}
+
+header a, footer a {
+  color: white;
+  text-decoration: none;
+  font-size: 1em;
+  transition: color 0.3s;
+}
+
+header a, footer a:hover {
+  color: #ddd;
+}
+
+.button, button {
+  text-decoration:none;
+  background-color: #fff;
+  color: #333;
+  border: 2px solid #333;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.button:hover, button:hover {
+  background-color: #333;
+  color: white;
+}
+
+/* Main Content Styles */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  padding: 20px;
+}
+
+.content-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height:70%;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.content-wrapper img{
+  padding: 5%;
 }
 
 /* Styles pour la section des questions */
-section {
+.section1, .section3 {
   text-align: center;
   background-color: #fff;
   border-radius: 5px;
@@ -32,22 +113,6 @@ section h4 {
   font-size: 1rem;
 }
 
-/* Styles pour les boutons */
-button {
-  font-size: 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #4388d3;
-}
-
-/* Styles pour le pied de page */
-footer {
-  text-align: center;
-}
-
 /* Styles pour les groupes d'éléments de formulaire */
 #input-group {
   margin-bottom: 20px;
@@ -58,14 +123,14 @@ label {
   margin-right: 10px;
 }
 
-#clickDot {
-  width: 10px;
-  height: 10px;
-  background-color: red;
-  border-radius: 50%;
-  position: absolute;
-  display: none; /* Caché par défaut */
+
+.form-section {
+  display: none;
 }
+.form-section.active {
+  display: block;
+}
+
 
 input[type="radio"].rating10 {
   display: none;
@@ -113,4 +178,280 @@ input[type="radio"].rating10:hover + label {
 #pattern {
   margin-left: 400px;
   text-align: left;
+}
+
+
+/*Patient_recap*/
+.user-info, .form_answers, .result-box {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-info h2, .form_answers h3 {
+  color: #4CAF50;
+  margin-top: 0;
+}
+
+
+
+/*Bodychart style*/
+#clickDot {
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  visibility: hidden;
+  transform: translate(-50%, -50%);
+}
+
+#Dot {
+  width: 10px;
+  height: 10px;
+  background-color: blue;
+  border-radius: 50%;
+  position: absolute;
+  visibility: visible;
+  transform: translate(-50%, -50%);
+}
+
+#greenDot {
+  width: 1000px;
+  height: 1000px;
+  background-color: rgb(128, 0, 53);
+  border-radius: 50%;
+  position: absolute;
+  visibility: visible;
+}
+
+#bodyChart {
+  position: relative; /* Définir la position relative */
+}
+
+.image-container {
+  display: inline-block;
+  overflow: hidden; /* Pour cacher les parties de l'image qui dépassent */
+  width: 800px;
+  height: 500px; 
+}
+
+section {
+  /*text-align: center;*/
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#painLocation2{
+  width: 500px;
+}
+
+/*Pop-up style*/
+/* Modal styles */
+.popUp {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.popUp-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/*login page*/
+/* Main styles */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* Login container styles */
+#login_container {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+#login_container h3 {
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+/* Form styles */
+#login_form {
+  display: flex;
+  flex-direction: column;
+}
+
+#login_form label {
+  margin: 0.5rem 0 0.2rem;
+  font-weight: bold;
+}
+
+#login_form input {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
+
+/* Error message styles */
+#error_message {
+  color: red;
+  margin-top: 1rem;
+}
+
+/* No account link styles */
+#create_account {
+  margin-top: 1rem;
+}
+
+.create_account {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.create_account:hover {
+  color: #555;
+}
+
+/*Style for account creation page*/
+#account_creation {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+#account_creation h3 {
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+/* Form styles */
+#account_creation_form {
+  display: flex;
+  flex-direction: column;
+}
+
+#account_creation_form label {
+  margin: 0.5rem 0 0.2rem;
+  font-weight: bold;
+}
+
+#account_creation_form input,
+#account_creation_form select {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Error message styles */
+#error_inscription {
+  color: red;
+  margin-top: 1rem;
+}
+
+/* Footer styles */
+.footer {
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto;
+}
+
+.footer hr {
+  border: 0;
+  border-top: 1px solid #555;
+  margin-bottom: 1rem;
+}
+
+footer {
+  text-align: center;
+}
+
+/*style of Patient answer page*/
+/* Heading styles */
+.main h3 {
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+/* Search input styles */
+#search {
+  padding: 0.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Patient list styles */
+#patient_list {
+  list-style-type: none;
+  width: 100%;
+  max-width: 400px;
+  padding: 0;
+}
+
+#patient_list li {
+  background: #fff;
+  padding: 0.8rem;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#patient_list li:hover {
+  background: #f0f0f0;
 }
